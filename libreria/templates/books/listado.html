@@ -1,22 +1,30 @@
 {% extends "base.html" %}
 
 {% block title %} Libros {% endblock %}
-
-{% block content %}
 <body>
+{% block content %}
 
-<div><h1>Aqui iria el listado</h1></div>
 
-<div class="container">
-    Libros Disponibles
-    <ol id="lista2">
+    <div class="row">
         {% for book in books %}
-            <li><a href="/libros/listado/{{book.slug}}">{{ book.name }} </a> </li>
+        <div class="card col-xs-6 col-sm-4" style="width: 20rem;">
+          <div class="card-block">
+            <h4 class="card-title">
+              <a href="/libros/{{book.slug}}">
+                {{ book.name }}
+              </a>
+            </h4>
+            <p class="card-text">{{ book.descripcion }}</p>
+          </div>
+        </div>
         {% endfor %}
-    </ol>
-</div>
+    </div>
+
 
 {% endblock %}
+
+
+
 </body>
 
 <!--  <li><a href="{% url 'books:detalle' book.id %}"> {{ book.name }} </a> </li>-->
